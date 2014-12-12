@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<title>Youtube!</title>
+		<link href="/bower/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="css/main.css" rel="stylesheet"/>
+	</head>
+
+	<body ng-app="YouTube" ng-controller="YouTubeCtrl">
+		<div class="col-lg-6" style="background-color:#1C1D21;height:400px"></div>
+
+		<div class="col-lg-6" style="background-color:#445878;height:400px">
+			<div id="player"></div>
+			<div class="tableContainer">
+				<table class="table  table-condensed" style="color:#EEEFF7">
+					<tr ng-repeat="video in nowPlaying">
+						<td ng-click="selectNowPlaying(video,$index)" ng-class="{selected: (currentSong==$index)}">
+						{{($index)+1}} - {{video.description | limitTo : 40}}
+						</td>
+						<td>
+								<button ng-click="remove(video)"  class="btn btn-danger btn-xs glyphicon glyphicon-remove"></button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<div class="row">
+				<div class="col-lg-6" style="background-color:#92CDCF;height:400px">
+		</div>
+
+		<div class="col-lg-6" style="background-color:#EEEFF7;height:400px;padding-top:5px">
+			<form class="form-inline" role="form">
+			  <div class="form-group">
+			    <div class="input-group">
+			      <input type="text" class="form-control" style="width:600px"  ng-model="term" placeholder="Search">
+			    </div>
+			    <div class="input-group">
+				
+			      	<button ng-click="search(term)" class="btn btn-primary glyphicon glyphicon-search">
+			      		
+			      	</button>
+					</div>      
+			  </div>
+			</form>
+		
+			<div class="tableContainer">
+			<table class="table table-striped mini-table">
+				<tr ng-repeat="item in results" >
+					<td><img ng-src="{{item.snippet.thumbnails.default.url}}" class="thumbnail"/></td>
+					<td>
+						<div class="description">
+							{{item.snippet.description}}
+						</div>
+						<button ng-click="add(item)" class="btn btn-success btn-xs glyphicon glyphicon-music"></button>
+						<button ng-click="play(item)" class="btn btn-danger btn-xs glyphicon glyphicon-play"></button>
+					</td>
+				</tr>
+			</table>
+			</div>
+		</div>
+
+	<script src="/bower/jquery/dist/jquery.min.js"></script>
+	<script src="/bower/angularjs/angular.min.js"></script>
+	<script src="/bower/bootstrap/dist//js/bootstrap.min.js"></script>	
+	<script src="js/main.js"></script>
+	</body>
+</html>

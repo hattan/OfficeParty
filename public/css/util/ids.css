@@ -1,0 +1,15 @@
+#signout {
+  float: right;
+  display: block;
+  text-align: right;
+  padding-bottom: 5px;
+  width: 100%;
+  color: black;
+  background-color: #B5825F; }
+
+#nowPlaying tr:first-child td {
+  border-top: 0; }
+
+#player {
+  float: right;
+  margin-right: -10px; }
