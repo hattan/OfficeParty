@@ -53,7 +53,7 @@ module.exports = function(passport){
     passport.use('facebook', new FacebookStrategy({
             clientID : '1576762302539344',
             clientSecret : 'e23387548135f5393321e99e3d41b825',
-            callbackURL  : 'http://localhost:3000/auth/facebook/callback'
+            callbackURL  : 'http://officeparty.azurewebsites.net/auth/facebook/callback'
         },
         
         function(token, refreshToken, profile, done) {
