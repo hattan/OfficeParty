@@ -1,5 +1,6 @@
 var LocalStrategy   = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
+var config =require('../config.js');
 var User = require('../models/user');
 var bCrypt = require('bcrypt-nodejs');
 
@@ -50,12 +51,7 @@ module.exports = function(passport){
         })
     );
 
-    passport.use('facebook', new FacebookStrategy({
-            clientID : '1576762302539344',
-            clientSecret : 'e23387548135f5393321e99e3d41b825',
-            callbackURL  : 'http://officeparty.azurewebsites.net/auth/facebook/callback'
-        },
-        
+    passport.use('facebook', new FacebookStrategy(config.facebook,
         function(token, refreshToken, profile, done) {
             findOrCreateUser = function(){
                 // find a user in Mongo with provided username
